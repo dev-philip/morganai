@@ -8,7 +8,8 @@
 
 .header-container{
     height: 60px;
-    background: grey;
+    /* background: rgb(128, 128, 128); */
+    background: rgb(26, 12, 93);
 }
 
 
@@ -25,12 +26,11 @@
 }
 
 .header-text{
-    margin-right: 100px;
-    
+    margin-right: 50px;
 }
 
 .header-text .text-1{
-    margin-right: 20px;
+    margin-right: 30px;
     cursor: pointer;
 }
 

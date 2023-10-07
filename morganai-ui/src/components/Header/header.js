@@ -13,7 +13,7 @@ function Header() {
                 <div className="header-text-wrapper">
                     <div className="header-text">
                         <span className="text-1">Login</span>
-                        <span className="text-2">Signup</span>
+                        <span className="text-2">Sign-up</span>
                     </div>
                 </div>
                
