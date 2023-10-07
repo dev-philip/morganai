@@ -1,0 +1,39 @@
+.header{
+    background-color: red;
+}
+
+.companyLogo{
+    margin-left: 40px;
+}
+
+.header-container{
+    height: 60px;
+    /* background: rgb(128, 128, 128); */
+    background: rgb(26, 12, 93);
+}
+
+
+.header-container{
+    display: flex;
+    align-items: center; 
+}
+
+
+.header-text-wrapper{
+    color: #eddd0a;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.header-text{
+    margin-right: 50px;
+}
+
+.header-text .text-1{
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.header-text .text-2{
+    cursor: pointer;
+}

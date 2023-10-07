@@ -1,0 +1,22 @@
+.input-container{
+    /* position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%); */
+    margin-top: 700px;
+    text-align: center;
+}
+
+.input-text{
+    height: 42px;
+    width: 40%;
+
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.input-button{
+    height: 44px;
+    width: 40px;
+}
