@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './chatbody.css';
 import TypeIt from "typeit-react";
+import axios from 'axios';
 
 function Chatbody() {
 
   const [chatMessage, setChatMessage] = useState('');
   const [chatMessageTrack, setChatMessageTrack] = useState('');
+  const [aiMessage, setAiMessage] = useState('');
+  const [chatMessageTempDb, setChatMessageTempDb] = useState([]);
+  const [chatMessageDb, setChatMessageDb] = useState([
+   
+  ]);
   const [activateBot, setActivateBot] = useState(0);
   const [activateHuman, setActivateHuman] = useState(0);
+
+  const bottomRef = useRef(null);
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -17,12 +25,52 @@ function Chatbody() {
   };
 
   const handleInputChange = (event) => {
-    setChatMessage(event.target.value);
-    setChatMessageTrack(event.target.value);
+    
+   setChatMessageTrack(event.target.value);
   };
+
+  const manipulateDataDb = (chatMessage, aiResponse) => {
+
+
+    // Create a new message object
+  const newMessage = {
+    id: (chatMessageDb.length + 1).toString(),  // Incrementing ID based on array length (adjust if needed)
+    userInput: chatMessage,
+    aiResponse: aiResponse,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString()
+  };
+
+  // Append the new message object to the chatMessageDb array
+  setChatMessageDb(prevDb => [...prevDb, newMessage]);
+  }
+
+  const scrollToBottom = () => {
+    bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatMessageDb]);
 
   const sendChatMessage = () => {
     // alert(chatMessage);
+    setChatMessage(chatMessageTrack);
+
+    axios.get('http://localhost:8080/api/ai/' + chatMessageTrack)
+            .then(response => {
+              // alert("success");
+              console.log(response);
+              console.log(response.data);
+              manipulateDataDb(chatMessageTrack, response.data);
+              setAiMessage(response.data);
+            })
+            .catch(error => {
+                alert("error occurred");
+                console.log(error);
+            });
+
     setTimeout(() => {
       setActivateBot(1);
     }, 2000)
@@ -34,53 +82,69 @@ function Chatbody() {
   return (
     <div className="Chatbody">
       <div className='chatbody-container'>
-            <div className='chat-container'>
-            {(activateHuman === 1) && (
+      {chatMessageDb.map((dataItem) => (
+        <>
+          <div className='chat-container' key={dataItem.id}>
               <div className='chat-user-text'>
                 <div className='werey-avater'>
-                  <div class="avatar-circle">
+                  <div className="avatar-circle">
                     <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?t=st=1696722213~exp=1696722813~hmac=6fb296d005f9834f2ef6f3010e74fdf0522d0282facb30f9beb1165284eb2402" alt="User Avatar" />
                   </div>
                 </div>
-                 <div className='data'>{chatMessage}</div>
+                 <div className='data'>{dataItem.userInput}</div>
               </div>
-            )}
-               
-
-                {(activateBot === 1) && (
+              <div className='time'>{dataItem.date + " " + dataItem.time}</div>
+            
+                
                   <div className='chat-ai-reply'>
                     <div className='werey-avater'>
-                      <div class="avatar-circle">
+                      <div className="avatar-circle">
                         <img src="https://img.freepik.com/premium-vector/young-smiling-man-avatar-man-with-brown-beard-mustache-hair-wearing-yellow-sweater-sweatshirt-3d-vector-people-character-illustration-cartoon-minimal-style_365941-860.jpg?w=740" alt="User Avatar" />
                       </div>
                     </div>
                    
                     <div className='data'>
-                    {/* Hello! I am a paralegal from morgan morgan. That's one of the well-known personal injury law firms in the U.S. How can I assist you today in your capacity as a paralegal from Morgan & Morgan? Whether you have questions about legal research, documentation, or any other topic, feel free to ask! */}
+                      {/* {dataItem.aiResponse} */}
                       <TypeIt
                         options={{
-                          strings: ["Hello! I am a paralegal from morgan morgan. That's one of the well-known personal injury law firms in the U.S. How can I assist you today in your capacity as a paralegal from Morgan & Morgan? Whether you have questions about legal research, documentation, or any other topic, feel free to ask!"],
+                          strings: [`${dataItem.aiResponse}`],
                           speed: 10,
                           waitUntilVisible: true,
+                          afterComplete: function (instance) {
+                            instance.destroy();
+                          }
                         }}
                       />
                       </div>
                   </div>
-                )}
-                
-            </div>
+                <hr />
+          </div>
+          </>
+        ))}
+
+
+              {/* important break line */}
+    
+          <div ref={bottomRef}></div>
       </div>
+
+
+
+                
+      
+
       <div className="input-container">
           <form>
-              <div class="file-container" title='Upload a file'>
-                  <input type="file" id="fileInput" hidden />
+              <div className="file-container">
+                  {/* <input type="file" id="fileInput" hidden /> */}
                   <label for="fileInput">
-                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  <i className="fa fa-keyboard-o" aria-hidden="true"></i>
+
                   </label>
               </div>
               <input className="input-text" value={chatMessageTrack} onChange={handleInputChange} onKeyDown={handleKeyDown} type="text" placeholder="Send a Message" />
               <button type="button" className="input-button" title='Send a Message' onClick={() => sendChatMessage()}>
-                  <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                  <i className="fa fa-paper-plane-o" aria-hidden="true"></i>
               </button>
           </form>
         </div>

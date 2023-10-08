@@ -12,7 +12,7 @@ function Sidenav() {
   return (
     <div className="Sidenav">
         <div className='sidenav-container'>
-            <div className="search-container">
+            {/* <div className="search-container">
                 <input 
                     className="search-input"
                     type="text"
@@ -23,7 +23,7 @@ function Sidenav() {
                 <button className="search-button" onClick={handleSearch}>
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-            </div>
+            </div> */}
         </div>
     </div>
   );

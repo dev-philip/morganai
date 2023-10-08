@@ -1,4 +1,5 @@
 const express = require('express');
+const ip = require('ip');
 const userService = require('./services/userService');
 const userController = require('./controllers/userController');
 require('dotenv').config();
@@ -20,4 +21,5 @@ app.use('/ai', userController); //get conversation by id
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on ${ip.address()}:${PORT}`);
 });
