@@ -5,19 +5,11 @@ import Sidenav from './components/Sidenav/sidenav';
 
 // import TypeIt from "typeit-react";
 import React from 'react';
-import { Route, Routes} from 'react-router-dom';
-import Login from  './components/pages/Login';
-import SignUp from  './components/pages/SignUp';
 
 function Home() {
   return (
     <div className="App">
-      {/* <Header></Header> */}
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Header />} />
-      </Routes> 
+      <Header></Header>
       <Sidenav></Sidenav>
       <Chatbody></Chatbody>
     </div>

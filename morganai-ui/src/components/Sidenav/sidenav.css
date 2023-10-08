@@ -5,6 +5,7 @@
     width: 18%;
     height: 100%;
     background: #202123;
+    /* background: rgb(26, 12, 93); */
     color: white;
     /* padding-top: 20px; */
     padding-top: 2%;
@@ -15,7 +16,7 @@
 .search-container {
     /* display: auto; */
     display: flex;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
     padding: 5px;
     border-radius: 25px;
     width: 90%;
@@ -42,7 +43,7 @@
     color: white;
     border: none;
     border-radius: 15px;
-    padding: 6px 11px;
+    padding: 7px 11px;
     cursor: pointer;
     transition: background-color 0.2s;
 }

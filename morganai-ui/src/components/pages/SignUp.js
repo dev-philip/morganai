@@ -43,11 +43,11 @@ function SignUp() {
             <label htmlFor="email">Email:</label>
             <input
               type="email"
-              id="email"
-              name="email"
-              value={formData.email}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleInputChange}
-              placeholder="Enter your email"
+              placeholder="Enter your name"
               required
             />
           </div>

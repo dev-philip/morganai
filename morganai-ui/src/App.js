@@ -8,18 +8,16 @@ import React from 'react';
 import { Link, Route, Routes} from 'react-router-dom';
 import Login from  './components/pages/Login';
 import SignUp from  './components/pages/SignUp';
+import Home from  './Home';
 
 function App() {
   return (
     <div className="App">
-      {/* <Header></Header> */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={<Home />} />
       </Routes> 
-      <Sidenav></Sidenav>
-      <Chatbody></Chatbody>
     </div>
   );
 }
