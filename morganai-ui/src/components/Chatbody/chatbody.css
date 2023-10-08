@@ -4,29 +4,30 @@
 
 .chatbody-container{
     padding-top: 20px;
-    /* border: 1px solid red; */
     overflow: auto;
     width: 50%;
-    height: 700px;
-    margin: 0 auto;
+    margin: 0;
+    /* border: 1px solid red; */
+    /* height: 700px; */
 }
 
 .input-container{
-    /* position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%); */
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    width: 60%;
+    align-self: right;
     margin-top: 15px;
     text-align: center;
+    /* margin-top: 700px; */
 }
 
 .input-text{
-    height: 42px;
+    /* height: 42px; */
     width: 40%;
-
     border: 1px solid grey;
     border-radius: 5px;
-    padding-left: 29px;
+    /* padding-left: 40px; */
 }
 
 .file-container {
@@ -37,7 +38,7 @@
 }
 
 .file-container label {
-    display: flex;
+    display: fixed;
     align-items: center;
     padding: 5px 5px;
     color: black;
@@ -47,15 +48,13 @@
     margin-left: 3px;
 }
 
+/* Thiss */
 .input-button{
-    height: 44px;
-    width: 40px;
+    margin-left: 95%;
+    height: 10px;
+    width: 5px;
     cursor: pointer;
 }
-
-
-
-
 
 .avatar-circle {
     width: 50px; /* Adjust as needed */
@@ -81,7 +80,7 @@
     width: 100%;
     /* border: 1px solid red; */
     padding-top: 20px;
-    /* padding-left: 20px; */
+    padding-left: 5%;
 }
 
 .chat-ai-reply{
@@ -90,13 +89,14 @@
 }
 
 .werey-avater{
+    margin-left: 45%;
     width: 7%;
 }
 .chat-ai-reply .data{
     width: 100%;
     /* border: 1px solid red; */
     padding-top: 20px;
-    /* padding-left: 20px; */
+    padding-left: 5%;
 }
 
 

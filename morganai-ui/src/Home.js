@@ -5,11 +5,11 @@ import Sidenav from './components/Sidenav/sidenav';
 
 // import TypeIt from "typeit-react";
 import React from 'react';
-import { Link, Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Login from  './components/pages/Login';
 import SignUp from  './components/pages/SignUp';
 
-function App() {
+function Home() {
   return (
     <div className="App">
       {/* <Header></Header> */}
@@ -24,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
