@@ -1,0 +1,45 @@
+.sidenav-container{
+    margin-top: 5px;
+    position: fixed;
+    width: 15%;
+    height: 100%;
+    background: #202123;
+    color: white;
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+.search-container {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 25px;
+    width: 90%;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.search-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
